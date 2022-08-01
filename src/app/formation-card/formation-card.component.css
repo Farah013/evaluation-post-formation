@@ -1,0 +1,38 @@
+.card {
+  border-radius: 10px;
+  font-family: "Helvetica", FontAwesome, sans-serif;
+  margin-bottom: 3%;
+  margin-left: 2.5%;
+  width: 94%;
+}
+.card-title {
+  color: #46c4ee;
+  margin-top: 1%;
+  margin-left: 1%;
+  font-weight: bold;
+  font-size: 20px;
+}
+.card-text {
+  margin-left: 1%;
+  color: rgb(114, 114, 112);
+  font-size: 15px;
+}
+.table-style {
+  margin-left: 1%;
+}
+.text-data {
+  padding-left: 15%;
+  color: rgb(114, 114, 112);
+  font-weight: 800;
+  font-size: 15px;
+  padding-bottom: 2%;
+}
+table {
+  table-layout: auto;
+  width: 500px;
+}
+.btn-style {
+  border-radius: 20px;
+  padding-left: 15px;
+  margin-left: 85%;
+}

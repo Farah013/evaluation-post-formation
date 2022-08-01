@@ -1,0 +1,65 @@
+<button
+  class="btn btn-info btn-shape btn-style"
+  style="color: white"
+  (click)="open(content); cleanForm()"
+>
+  Ajouter une formation
+</button>
+<ng-template #content let-modal>
+  <div>
+    <h4 class="modal-title title-style" id="modal-basic-title ">
+      Ajouter une formation
+    </h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <input
+        class="form-control me-2 search-style"
+        type="search"
+        placeholder="Nom de la formation"
+        aria-label="Search"
+        name="title"
+        id="title"
+        (keyup)="getNewTitle()"
+      />
+      <table class="table-style">
+        <tr>
+          <td class="header-title">Détails de la formation</td>
+          <td class="header-title participant-style">Liste des participants</td>
+        </tr>
+        <tr>
+          <td>
+            <app-details-formation
+              (getNewDetails)="getNewDetails($event)"
+            ></app-details-formation>
+          </td>
+          <td rowspan="3">
+            <app-liste-participants></app-liste-participants>
+          </td>
+        </tr>
+        <tr>
+          <td class="header-title">Objectifs pédagogiques</td>
+        </tr>
+        <tr>
+          <td>
+            <app-objectifs-pedagogiques
+              (getNewFormation)="getNewFormation($event)"
+            ></app-objectifs-pedagogiques>
+          </td>
+        </tr>
+      </table>
+      <div class="modal-footer">
+        <button type="button" class="btn" (click)="modal.close('Save click')">
+          Annuler
+        </button>
+        <button
+          type="submit"
+          class="btn btn-outline-dark"
+          (click)="saveFormation(); modal.close('save click')"
+        >
+          Ajouter la formation
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

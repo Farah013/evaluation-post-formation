@@ -1,0 +1,22 @@
+mat-drawer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  background-color: rgb(221, 217, 217);
+}
+mat-drawer {
+  width: 330px;
+
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+  background-color: #052636;
+  overflow: hidden;
+}
+
+.title-style {
+  color: #052636;
+  margin-top: 5%;
+  margin-left: 3%;
+  font-weight: 800;
+  font-size: 30px;
+}

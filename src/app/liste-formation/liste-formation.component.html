@@ -1,0 +1,26 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidenav-bar></app-sidenav-bar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="title-style">
+      <p>
+        Liste des Formations planifiées
+        <app-ajout-formation
+          (postNewFormation)="postNewFormation($event)"
+          [formationList]="formationList"
+        ></app-ajout-formation>
+      </p>
+    </div>
+    <app-search-comp></app-search-comp>
+    <ng-container *ngFor="let formation of formationList"
+      ><app-formation-card
+        *ngIf="formation.done != 1"
+        [titleF]="formation.Titre"
+        [dateF]="formation.DateDeb"
+        [nbreP]="formation.NbreParticipants"
+        [formateur]="formation.Formateur"
+      ></app-formation-card
+    ></ng-container>
+  </mat-drawer-content>
+</mat-drawer-container>

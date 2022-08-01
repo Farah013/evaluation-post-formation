@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center title-class">
+          <h2>Identifiez-vous</h2>
+        </div>
+        <form>
+          <form>
+            <div class="mb-3">
+              <input
+                type="email"
+                class="form-control input-shape"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Adresse email"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="password"
+                class="form-control input-shape"
+                id="exampleInputPassword1"
+                placeholder="Mot de passe"
+              />
+            </div>
+            <div id="emailHelp" class="form-text text-class">
+              Mot de passe oublié
+            </div>
+            <div class="vertical-center">
+              <button
+                type="submit"
+                class="btn btn-info btn-shape"
+                routerLink="/home"
+                (click)="login()"
+              >
+                <span style="color: white">Se connecter</span>
+              </button>
+            </div>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

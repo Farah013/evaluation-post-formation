@@ -1,0 +1,42 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img
+      src="../../assets/images/user.png"
+      alt="user avatar"
+      style="float: left"
+    />
+    <h5 class="user-text">Farah Sassi</h5>
+  </div>
+  <div class="liste-style">
+    <a
+      mat-list-item
+      class="item-text"
+      routerLink="/home"
+      routerLinkActive="list-item-active"
+    >
+      <mat-icon>dns</mat-icon>
+      Page d'accueil
+    </a>
+    <mat-divider></mat-divider>
+    <a
+      mat-list-item
+      class="item-text"
+      routerLink="/profile"
+      routerLinkActive="list-item-active"
+      ><mat-icon>co_present</mat-icon>Mon Profil</a
+    >
+    <a mat-list-item class="item-text" routerLinkActive="list-item-active"
+      ><mat-icon>supervised_user_circle</mat-icon>Liste de Fomrateurs
+    </a>
+    <a
+      mat-list-item
+      class="item-text"
+      routerLink="/liste-formation"
+      routerLinkActive="list-item-active"
+      ><mat-icon>view_list</mat-icon>Liste des Formations</a
+    >
+    <a mat-list-item class="item-text" routerLinkActive="list-item-active"
+      ><mat-icon>donut_small</mat-icon>Suivi de progression</a
+    >
+  </div>
+</mat-nav-list>

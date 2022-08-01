@@ -1,0 +1,39 @@
+.logo {
+  padding: 2.6rem 1rem;
+}
+.mat-icon {
+  vertical-align: center;
+  margin-right: 1rem;
+}
+.user-text {
+  color: white;
+  padding-left: 50px;
+  padding-top: 5px;
+  font-size: 22px;
+}
+
+.mat-divider {
+  border-top-width: 2px;
+  border-color: white;
+
+  margin: 25px;
+}
+
+.mat-list-item {
+  color: #7a8490 !important;
+  font-size: 15px;
+  height: 65px !important;
+  margin-bottom: 8px;
+}
+
+.mat-list-item::ng-deep {
+  border-radius: 5px;
+  margin: 0 8px;
+}
+.mat-list-item::ng-deep:hover {
+  background: #2c3344 !important;
+  color: white;
+}
+.liste-style {
+  margin-top: 80px;
+}
