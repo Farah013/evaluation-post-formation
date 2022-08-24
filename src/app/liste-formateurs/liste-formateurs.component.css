@@ -1,0 +1,62 @@
+mat-drawer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  background-color: rgb(221, 217, 217);
+}
+mat-drawer {
+  width: 330px;
+
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+  background-color: #052636;
+  overflow: hidden;
+}
+
+.title-style {
+  color: #052636;
+  margin-top: 5%;
+  margin-left: 3%;
+  font-weight: 800;
+  font-size: 30px;
+}
+table {
+  font-size: 18px;
+}
+.action-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.saveForm {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 5rem;
+}
+.btn-style-save {
+  border-radius: 20px;
+  padding-left: 15px;
+  margin-left: 7rem;
+  margin-bottom: 3%;
+  margin-top: 2rem;
+  background-color: #46c4ee;
+}
+.image-save-style {
+  margin-left: 12rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+input {
+  margin-bottom: 2%;
+}
+.btn-submit-style {
+  padding-left: 15px;
+  margin-left: 30%;
+  margin-right: 1%;
+  border-color: #46c4ee;
+}
+.btn-annuler-style {
+  padding-left: 15px;
+
+  border-color: #46c4ee;
+}

@@ -1,14 +1,15 @@
+import { Objectifs } from './../models/obejctifs';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AppServiceService } from './../app-service.service';
 import { Participant } from '../models/participant';
-
+import { Evaluation } from '../models/evaluation';
 @Component({
-  selector: 'app-formation-card',
-  templateUrl: './formation-card.component.html',
-  styleUrls: ['./formation-card.component.css'],
+  selector: 'app-formation-passed-card',
+  templateUrl: './formation-passed-card.component.html',
+  styleUrls: ['./formation-passed-card.component.css'],
 })
-export class FormationCardComponent implements OnInit {
+export class FormationPassedCardComponent implements OnInit {
   @Input() idFormation: number;
   @Input() titleF: string;
   @Input() dateF: string;
@@ -19,30 +20,32 @@ export class FormationCardComponent implements OnInit {
     private modalService: NgbModal,
     private service: AppServiceService
   ) {}
-
-  ngOnInit(): void {}
-  openSave(content: any) {
+  openEval(content: any) {
+    this.modalService.open(content, {
+      windowClass: 'myCustomModalClass',
+      centered: true,
+    });
+  }
+  openConsultation(content: any) {
     this.modalService.open(content, { size: 'xl', centered: true });
   }
-  data;
+  ngOnInit(): void {}
 
   formation;
   getFormationFromAPI() {
-    console.log('idFormarion==', this.idFormation);
     this.service.getFormationById(this.idFormation).subscribe(
       (response) => {
         console.log('Response from API is ', response);
         this.formation = Object.values(response);
         this.formation = this.formation[0];
-        console.warn('This formation..', this.formation);
+        console.warn(this.formation);
       },
       (error) => {
         console.log('Error is ', error);
       }
     );
   }
-
-  objectifs = [];
+  objectifs: Objectifs[];
   getObjectifsFromAPI() {
     this.service.getObjectifsByFormation(this.idFormation).subscribe(
       (response) => {
@@ -56,12 +59,27 @@ export class FormationCardComponent implements OnInit {
       }
     );
   }
+
   participants: Participant[];
   getParticipantsFromAPI() {
     this.service.getParticipantsByFormation(this.idFormation).subscribe(
       (response) => {
         console.log('Response from API is ', response);
         this.participants = Object.values(response);
+        //this.formation = this.formation[0];
+        console.warn(this.participants);
+      },
+      (error) => {
+        console.log('Error is ', error);
+      }
+    );
+  }
+  eval: Evaluation[];
+  getEvalFromAPI() {
+    this.service.getEvalByFormation(this.idFormation).subscribe(
+      (response) => {
+        console.log('Evaluation from API== ', response);
+        this.eval = Object.values(response);
         //this.formation = this.formation[0];
         console.warn(this.participants);
       },

@@ -1,0 +1,123 @@
+<button
+  class="btn btn-info btn-shape btn-style"
+  style="color: white"
+  (click)="open(content); cleanForm()"
+>
+  Ajouter formateur
+</button>
+<ng-template #content let-modal>
+  <div>
+    <h4 class="modal-title title-style" id="modal-basic-title ">
+      Ajouter formateur
+    </h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"
+          >Nom et Prénom
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          (keyup)="getNewName()"
+          aria-describedby="emailHelp"
+        />
+        <label for="exampleInputEmail1" class="form-label">CIN </label>
+        <input
+          type="number"
+          class="form-control"
+          id="CIN"
+          (keyup)="getNewCIN()"
+          aria-describedby="emailHelp"
+        />
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          (keyup)="getNewEmail()"
+          class="form-control"
+          id="email"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <table>
+        <tr>
+          <td style="width: 20%">Genre</td>
+          <td style="width: 60%">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="exampleRadios"
+                id="exampleRadios1"
+                value="Femme"
+                checked
+              />
+              <label class="form-check-label" for="exampleRadios1">
+                Femme
+              </label>
+            </div>
+          </td>
+          <td style="width: 60%">
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="exampleRadios"
+                id="exampleRadios2"
+                value="Homme"
+              />
+              <label class="form-check-label" for="exampleRadios2">
+                Homme
+              </label>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <label for="exampleInputEmail1" class="form-label">Spécialité </label>
+      <input
+        type="text"
+        class="form-control"
+        id="spec"
+        (keyup)="getNewSpeciality()"
+        aria-describedby="emailHelp"
+      />
+
+      <button
+        type="button"
+        class="btn btn-outline-dark btn-submit-style"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        (click)="
+          modal.close('save click'); saveFormateur(); openSave(contentSave)
+        "
+      >
+        Ajouter
+      </button>
+      <!-- Modal -->
+      <ng-template #contentSave let-modal>
+        <div class="modal-body">
+          <img src="../../assets/images/save.png" class="image-save-style" />
+          <p class="saveForm">Formateur ajouté avec succès !</p>
+          <button
+            type="button"
+            class="btn btn-light btn-style-save"
+            (click)="closeSave(); modal.close('Close click')"
+            style="color: white"
+          >
+            Retourner à la liste des formateurs
+          </button>
+        </div>
+      </ng-template>
+      <button
+        type="button"
+        class="btn btn-outline-dark btn-annuler-style"
+        (click)="modal.close('Save click')"
+      >
+        Annuler
+      </button>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,41 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Spécialité</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let formateur of formateurs">
+      <th scope="row">{{ formateur.CIN }}</th>
+      <td>
+        {{ formateur.Name }}
+      </td>
+      <td>{{ formateur.Email }}</td>
+      <td>{{ formateur.Speciality }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination
+    [collectionSize]="formateurList.length"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    (pageChange)="refreshFormateurs()"
+  >
+  </ngb-pagination>
+
+  <select
+    class="form-select"
+    style="width: auto"
+    [(ngModel)]="pageSize"
+    (ngModelChange)="refreshFormateurs()"
+  >
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="6">6 items per page</option>
+  </select>
+</div>

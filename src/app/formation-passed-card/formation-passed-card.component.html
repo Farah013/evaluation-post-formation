@@ -1,0 +1,188 @@
+<div class="card">
+  <div class="card-body">
+    <table style="width: 100%">
+      <tr>
+        <td>
+          <p class="card-title">
+            {{ titleF }}
+          </p>
+        </td>
+        <td>
+          <span *ngIf="Eval == 0"
+            ><span class="dot_orange"></span> En attente d'évaluation
+          </span>
+          <span *ngIf="Eval != 0"
+            ><span class="dot_green"></span> évaluation reçue
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table class="table-style">
+            <tr>
+              <td class="card-text">Date de la formation</td>
+              <td class="text-data">{{ dateF }}</td>
+            </tr>
+
+            <tr>
+              <td class="card-text">Nombre de participants</td>
+              <td class="text-data">{{ nbreP }}</td>
+            </tr>
+            <tr>
+              <td class="card-text">Formateur</td>
+              <td class="text-data">
+                {{ formateur }}
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td style="width: 700px">
+          <button
+            *ngIf="Eval != 0"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            (click)="
+              openEval(contentEval); getEvalFromAPI(); getObjectifsFromAPI()
+            "
+            style="font-size: 13px; margin-bottom: 1%"
+            class="btn btn-light btn-style"
+          >
+            consulter l'évaluation
+          </button>
+          <!-- Modal -->
+          <ng-template #contentEval let-modal>
+            <div class="modal-body">
+              <!--TABLE -->
+              <h1 class="title-eval">Evaluation de la formation</h1>
+              <table style="width: 100%">
+                <tr>
+                  <td class="eval-style">Evaluation technique</td>
+                  <td class="eval-style">Evaluation comportementale</td>
+                </tr>
+                <tr>
+                  <td>
+                    <app-evaluation-tech
+                      [idFormation]="idFormation"
+                      [eval]="eval[0]"
+                      [objectifs]="objectifs"
+                    ></app-evaluation-tech>
+                  </td>
+                  <td>
+                    <app-evaluation-comp [eval]="eval[0]"></app-evaluation-comp>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </ng-template>
+
+          <button
+            style="font-size: 13px"
+            class="btn btn-light btn-style"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            (click)="
+              openConsultation(contentSave);
+              getFormationFromAPI();
+              getObjectifsFromAPI();
+              getParticipantsFromAPI()
+            "
+          >
+            Consulter la fiche de la formation
+          </button>
+          <!-- Modal -->
+          <ng-template #contentSave let-modal>
+            <div class="modal-body">
+              <!--TABLE -->
+              <h1>Fiche de la formation</h1>
+              <table style="width: 100%">
+                <tr>
+                  <td style="width: 70%">
+                    <table style="width: 100%">
+                      <tr>
+                        <td class="fiche-style fiche-info">ID:</td>
+                        <td class="fiche-style">{{ formation.idFormation }}</td>
+                      </tr>
+                      <tr>
+                        <td class="fiche-style fiche-info">Titre:</td>
+                        <td class="fiche-style">{{ formation.Titre }}</td>
+                      </tr>
+                      <tr>
+                        <td class="fiche-style fiche-info">Formateur:</td>
+                        <td class="fiche-style">{{ formation.Formateur }}</td>
+                      </tr>
+                      <tr>
+                        <td class="fiche-style fiche-info">Date Début</td>
+                        <td class="fiche-style">{{ formation.DateDeb }}</td>
+                      </tr>
+                      <tr>
+                        <td class="fiche-style fiche-info">Date Fin</td>
+                        <td class="fiche-style">{{ formation.DateFin }}</td>
+                      </tr>
+                      <tr>
+                        <td class="fiche-style fiche-info">Mode</td>
+                        <td class="fiche-style">{{ formation.Mode }}</td>
+                      </tr>
+                      <tr
+                        *ngIf="
+                          formation.Mode !== 'En ligne' ||
+                          formation.Mode !== 'Online'
+                        "
+                      >
+                        <td class="fiche-style fiche-info">Lieu</td>
+                        <td class="fiche-style" *ngIf="formation.Lieu == null">
+                          {{ formation.Lieu }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="fiche-style fiche-info">
+                          Nombre de participants
+                        </td>
+                        <td class="fiche-style">
+                          {{ formation.NbreParticipants }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="fiche-style fiche-info">Objectifs</td>
+                        <td>
+                          <ul>
+                            <li *ngFor="let obj of objectifs">
+                              {{ obj.contenu }}
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+
+                  <td style="margin-right: 1%">
+                    <h2>Liste des participants</h2>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Participant</th>
+                          <th scope="col">Identifiant</th>
+                          <th scope="col">Email</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let p of participants; index as i">
+                          <th scope="row">{{ i + 1 }}</th>
+                          <td>
+                            {{ p.participant }}
+                          </td>
+                          <td>{{ p.identifiant }}</td>
+                          <td>{{ p.email }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

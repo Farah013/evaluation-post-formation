@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import * as XLSX from 'xlsx';
 const { read, write, utils } = XLSX;
@@ -9,6 +9,7 @@ type AOA = any[][];
   styleUrls: ['./liste-participants.component.css'],
 })
 export class ListeParticipantsComponent implements OnInit {
+  @Output() getParticipantsList: EventEmitter<any> = new EventEmitter();
   data: AOA = [];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'SheetJS.xlsx';
@@ -28,6 +29,7 @@ export class ListeParticipantsComponent implements OnInit {
 
       /* save data */
       this.data = <AOA>XLSX.utils.sheet_to_json(ws, { header: 1 });
+      this.getParticipantsList.emit(this.data);
     };
     reader.readAsBinaryString(target.files[0]);
   }

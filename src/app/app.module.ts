@@ -26,6 +26,13 @@ import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListeFormateursComponent } from './liste-formateurs/liste-formateurs.component';
+import { FormateurCardComponent } from './formateur-card/formateur-card.component';
+import { AjoutFormateurComponent } from './ajout-formateur/ajout-formateur.component';
+import { FormationPassedComponent } from './formation-passed/formation-passed.component';
+import { FormationPassedCardComponent } from './formation-passed-card/formation-passed-card.component';
+import { EvaluationTechComponent } from './evaluation-tech/evaluation-tech.component';
+import { EvaluationCompComponent } from './evaluation-comp/evaluation-comp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +47,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetailsFormationComponent,
     ListeParticipantsComponent,
     ObjectifsPedagogiquesComponent,
+    ListeFormateursComponent,
+    FormateurCardComponent,
+    AjoutFormateurComponent,
+    FormationPassedComponent,
+    FormationPassedCardComponent,
+    EvaluationTechComponent,
+    EvaluationCompComponent,
   ],
   imports: [
     NgbModule,

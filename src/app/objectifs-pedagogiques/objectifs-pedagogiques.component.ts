@@ -1,6 +1,6 @@
 import { NgForm } from '@angular/forms';
-import { Objectifs } from './obejctifs';
-import { Formation } from './../ajout-formation/formation';
+import { Objectifs } from '../models/obejctifs';
+import { Formation } from '../models/formation';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({

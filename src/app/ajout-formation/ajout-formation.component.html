@@ -34,7 +34,10 @@
             ></app-details-formation>
           </td>
           <td rowspan="3">
-            <app-liste-participants></app-liste-participants>
+            {{ var1 }}
+            <app-liste-participants
+              (getParticipantsList)="getParticipantsList($event)"
+            ></app-liste-participants>
           </td>
         </tr>
         <tr>
@@ -53,12 +56,31 @@
           Annuler
         </button>
         <button
-          type="submit"
+          type="button"
           class="btn btn-outline-dark"
-          (click)="saveFormation(); modal.close('save click')"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          (click)="
+            saveFormation(); modal.close('save click'); openSave(contentSave)
+          "
         >
           Ajouter la formation
         </button>
+        <!-- Modal -->
+        <ng-template #contentSave let-modal>
+          <div class="modal-body">
+            <img src="../../assets/images/save.png" class="image-save-style" />
+            <p class="saveForm">Formation ajoutée avec succès !</p>
+            <button
+              type="button"
+              class="btn btn-light btn-style-save"
+              (click)="closeSave(); modal.close('Close click')"
+              style="color: white"
+            >
+              Retourner à la liste des formations
+            </button>
+          </div>
+        </ng-template>
       </div>
     </form>
   </div>

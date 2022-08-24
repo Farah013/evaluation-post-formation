@@ -1,0 +1,51 @@
+.range-style {
+  width: 20%;
+  height: 25px;
+  background: rgb(232, 158, 158);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 20px;
+  background: #f3f5f4;
+  cursor: pointer;
+  border-radius: 20rem;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 35%;
+  margin-top: 1%;
+  outline: none;
+  opacity: 0.7;
+  border-radius: 20rem;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+.slider-red-color {
+  background: #eba6a6;
+}
+.slider-yellow-color {
+  background: rgb(251, 251, 139);
+}
+.slider-green-color {
+  background: rgb(166, 240, 166);
+}
+
+.slider:hover {
+  opacity: 1;
+}
+table {
+  border-collapse: collapse;
+}
+.text-style {
+  font-weight: bold;
+}
+tr {
+  padding: 5%;
+}

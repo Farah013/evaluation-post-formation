@@ -1,0 +1,221 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidenav-bar></app-sidenav-bar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="title-style">
+      <p>
+        Liste des Formateurs
+        <app-ajout-formateur
+          (postNewFormateur)="postNewFormateur($event)"
+        ></app-ajout-formateur>
+      </p>
+    </div>
+    <table class="table table-striped" style="width: 95%; margin-left: 1%">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Spécialité</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formateur of formateurs">
+          <th scope="row">{{ formateur.CIN }}</th>
+          <td>
+            {{ formateur.Name }}
+          </td>
+          <td>{{ formateur.Email }}</td>
+          <td>{{ formateur.Speciality }}</td>
+          <td>
+            <button
+              class="action-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              style="color: rgb(78, 78, 252)"
+              (click)="deleteFormateur(formateur.CIN); openSave(contentSave)"
+            >
+              Supprimer
+            </button>
+            -
+            <!--Modal-->
+            <ng-template #contentSave let-modal>
+              <div class="modal-body">
+                <img
+                  src="../../assets/images/save.png"
+                  class="image-save-style"
+                />
+                <p class="saveForm">
+                  Formateur avec ID : {{ formateur.CIN }} a été supprimé avec
+                  succès
+                </p>
+                <button
+                  type="button"
+                  class="btn btn-light btn-style-save"
+                  (click)="closeSave(); modal.close('Close click')"
+                  style="color: white"
+                >
+                  Retourner à la liste des formateurs
+                </button>
+              </div>
+            </ng-template>
+            <button
+              class="action-btn"
+              style="color: rgb(78, 78, 252)"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              (click)="open(content)"
+            >
+              Modifier
+            </button>
+            <ng-template #content let-modal>
+              <div>
+                <h4 class="modal-title title-style" id="modal-basic-title ">
+                  Modifier formateur
+                </h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Nom et Prénom
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      (keyup)="getNewName()"
+                      aria-describedby="emailHelp"
+                    />
+
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Email address</label
+                    >
+                    <input
+                      type="email"
+                      (keyup)="getNewEmail()"
+                      class="form-control"
+                      id="email"
+                      aria-describedby="emailHelp"
+                    />
+                  </div>
+                  <table>
+                    <tr>
+                      <td style="width: 20%">Genre</td>
+                      <td style="width: 60%">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios1"
+                            value="Femme"
+                            checked
+                          />
+                          <label class="form-check-label" for="exampleRadios1">
+                            Femme
+                          </label>
+                        </div>
+                      </td>
+                      <td style="width: 60%">
+                        <div>
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios2"
+                            value="Homme"
+                          />
+                          <label class="form-check-label" for="exampleRadios2">
+                            Homme
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Spécialité
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="spec"
+                    (keyup)="getNewSpeciality()"
+                    aria-describedby="emailHelp"
+                  />
+
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark btn-submit-style"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    (click)="
+                      modal.close('save click');
+                      updateFormateur(formateur.CIN);
+                      openSave(contentSave)
+                    "
+                  >
+                    Modifier
+                  </button>
+                  <!-- Modal -->
+                  <ng-template #contentSave let-modal>
+                    <div class="modal-body">
+                      <img
+                        src="../../assets/images/save.png"
+                        class="image-save-style"
+                      />
+                      <p class="saveForm">
+                        formateur avec l'ID : {{ formateur.CIN }} a été mis à
+                        jour avec succès
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-light btn-style-save"
+                        (click)="closeSave(); modal.close('Close click')"
+                        style="color: white"
+                      >
+                        Retourner à la liste des formateurs
+                      </button>
+                    </div>
+                  </ng-template>
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark btn-annuler-style"
+                    (click)="modal.close('Save click')"
+                  >
+                    Annuler
+                  </button>
+                </form>
+              </div>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        style="margin-left: 1%"
+        [collectionSize]="formateurList.length"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshFormateurs()"
+      >
+      </ngb-pagination>
+
+      <select
+        class="form-select"
+        style="width: auto; margin-right: 5%"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshFormateurs()"
+      >
+        <option [ngValue]="2">2 items per page</option>
+        <option [ngValue]="4">4 items per page</option>
+        <option [ngValue]="6">6 items per page</option>
+      </select>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

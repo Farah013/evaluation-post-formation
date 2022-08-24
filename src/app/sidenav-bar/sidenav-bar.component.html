@@ -25,16 +25,37 @@
       routerLinkActive="list-item-active"
       ><mat-icon>co_present</mat-icon>Mon Profil</a
     >
-    <a mat-list-item class="item-text" routerLinkActive="list-item-active"
+    <a
+      routerLink="/liste-formateur"
+      mat-list-item
+      class="item-text"
+      routerLinkActive="list-item-active"
       ><mat-icon>supervised_user_circle</mat-icon>Liste de Fomrateurs
     </a>
+
     <a
       mat-list-item
       class="item-text"
-      routerLink="/liste-formation"
       routerLinkActive="list-item-active"
+      [matMenuTriggerFor]="menu"
       ><mat-icon>view_list</mat-icon>Liste des Formations</a
     >
+    <mat-menu #menu="matMenu">
+      <a
+        class="item-text menu-item-style"
+        mat-menu-item
+        routerLink="/liste-formation"
+      >
+        Formations planifiées
+      </a>
+      <a
+        class="item-text menu-item-style"
+        routerLink="/formation-passed"
+        mat-menu-item
+        >Formations passées</a
+      >
+    </mat-menu>
+
     <a mat-list-item class="item-text" routerLinkActive="list-item-active"
       ><mat-icon>donut_small</mat-icon>Suivi de progression</a
     >

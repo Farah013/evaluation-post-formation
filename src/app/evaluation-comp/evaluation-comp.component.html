@@ -1,0 +1,211 @@
+<div class="card" style="width: 90%; margin: 2%">
+  <div class="card-body">
+    <table style="width: 100%" boder="2">
+      <tr>
+        <td colspan="3" style="width: max-content">
+          Organisation de son temps de travail, ponctualité, assiduité
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: max-content">
+          <input
+            *ngIf="eval.organisation == 1"
+            type="range"
+            class="slider slider-red-color"
+            min="1"
+            max="3"
+            id="autonomie"
+            value="1"
+            disabled
+          />
+          <input
+            *ngIf="eval.organisation == 2"
+            type="range"
+            class="slider slider-yellow-color"
+            min="1"
+            max="3"
+            id="organisation"
+            value="2"
+            disabled
+          />
+          <input
+            *ngIf="eval.organisation == 3"
+            type="range"
+            class="slider slider-green-color"
+            min="1"
+            max="3"
+            id="organisation"
+            value="3"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">Entretien et développement des compétences</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <input
+            *ngIf="eval.dev_competences == 1"
+            type="range"
+            class="slider slider-red-color"
+            min="1"
+            max="3"
+            id="dev_competences"
+            value="1"
+            disabled
+          />
+          <input
+            *ngIf="eval.dev_competences == 2"
+            type="range"
+            class="slider slider-yellow-color"
+            min="1"
+            max="3"
+            id="dev_competences"
+            value="2"
+            disabled
+          />
+          <input
+            *ngIf="eval.dev_competences == 3"
+            type="range"
+            class="slider slider-green-color"
+            min="1"
+            max="3"
+            id="dev_competences"
+            value="3"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">Comportement</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <input
+            *ngIf="eval.comportement == 1"
+            type="range"
+            class="slider slider-red-color"
+            min="1"
+            max="3"
+            id="comportement"
+            value="1"
+            disabled
+          />
+          <input
+            *ngIf="eval.comportement == 2"
+            type="range"
+            class="slider slider-yellow-color"
+            min="1"
+            max="3"
+            id="comportement"
+            value="2"
+            disabled
+          />
+          <input
+            *ngIf="eval.comportement == 3"
+            type="range"
+            class="slider slider-green-color"
+            min="1"
+            max="3"
+            id="comportement"
+            value="3"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">Participation et investissement</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <input
+            *ngIf="eval.participation == 1"
+            type="range"
+            class="slider slider-red-color"
+            min="1"
+            max="3"
+            id="participation"
+            value="1"
+            disabled
+          />
+          <input
+            *ngIf="eval.participation == 2"
+            type="range"
+            class="slider slider-yellow-color"
+            min="1"
+            max="3"
+            id="participation"
+            value="2"
+            disabled
+          />
+          <input
+            *ngIf="eval.participation == 3"
+            type="range"
+            class="slider slider-green-color"
+            min="1"
+            max="3"
+            id="participation"
+            value="3"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">Assertivité</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <input
+            *ngIf="eval.assertivity == 1"
+            type="range"
+            class="slider slider-red-color"
+            min="1"
+            max="3"
+            id="assertivity"
+            value="1"
+            disabled
+          />
+          <input
+            *ngIf="eval.assertivity == 2"
+            type="range"
+            class="slider slider-yellow-color"
+            min="1"
+            max="3"
+            id="assertivity"
+            value="2"
+            disabled
+          />
+          <input
+            *ngIf="eval.assertivity == 3"
+            type="range"
+            class="slider slider-green-color"
+            min="1"
+            max="3"
+            id="assertivity"
+            value="3"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" class="text-style">Commentaires / Progression</td>
+      </tr>
+    </table>
+
+    <input
+      style="width: 100%"
+      class="form-control"
+      type="text"
+      id="progression"
+      [placeholder]="eval.progression"
+      aria-label="Disabled input example"
+      disabled
+    />
+  </div>
+</div>

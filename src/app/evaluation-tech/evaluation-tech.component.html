@@ -1,0 +1,142 @@
+<div class="card" style="width: 90%">
+  <div class="card-body">
+    <table width="100%">
+      <tr>
+        <td style="width: min-content">
+          <label for="customRange2" class="form-label">Autonomie</label>
+        </td>
+        <td>
+          <input
+            *ngIf="eval.autonomie == 1"
+            type="range"
+            class="slider slider-red-color"
+            min="1"
+            max="3"
+            id="autonomie"
+            value="1"
+            disabled
+          />
+          <input
+            *ngIf="eval.autonomie == 2"
+            type="range"
+            class="slider slider-yellow-color"
+            min="1"
+            max="3"
+            id="autonomie"
+            value="2"
+            disabled
+          />
+          <input
+            *ngIf="eval.autonomie == 3"
+            type="range"
+            class="slider slider-green-color"
+            min="1"
+            max="3"
+            id="autonomie"
+            value="3"
+            disabled
+          />
+        </td>
+        <td>
+          <label for="customRange2" class="form-label" style="padding-left: 1%"
+            >Assimilation & Réalisation</label
+          >
+        </td>
+        <td style="width: max-content">
+          <input
+            *ngIf="eval.assimilation == 1"
+            type="range"
+            class="slider slider-red-color"
+            min="1"
+            max="3"
+            id="assimilation"
+            value="1"
+            disabled
+          />
+          <input
+            *ngIf="eval.assimilation == 2"
+            type="range"
+            class="slider slider-yellow-color"
+            min="1"
+            max="3"
+            id="assimilation"
+            value="2"
+            disabled
+          />
+          <input
+            *ngIf="eval.assimilation == 3"
+            type="range"
+            class="slider slider-green-color"
+            min="1"
+            max="3"
+            id="assimilation"
+            value="3"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="text-style">Atteinte des objectifs pédagogiques</td>
+        <td></td>
+      </tr>
+      {{
+        intialisation()
+      }}
+      <tr *ngFor="let obj of objectifs">
+        <td>{{ inc() }}. {{ obj.contenu }}</td>
+
+        <td></td>
+        <td></td>
+        <td>
+          <input
+            *ngIf="obj.niveau == 1"
+            type="range"
+            class="slider slider-red-color"
+            min="1"
+            max="3"
+            id="obj"
+            value="1"
+            disabled
+          />
+          <input
+            *ngIf="obj.niveau == 2"
+            type="range"
+            class="slider slider-yellow-color"
+            min="1"
+            max="3"
+            id="obj"
+            value="2"
+            disabled
+          />
+          <input
+            *ngIf="obj.niveau == 3"
+            type="range"
+            class="slider slider-green-color"
+            min="1"
+            max="3"
+            id="obj"
+            value="3"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-style">
+          Points forts /Axes d'amélioration
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <input
+            class="form-control"
+            type="text"
+            id="points_forts"
+            [placeholder]="eval.points_forts"
+            aria-label="Disabled input example"
+            disabled
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

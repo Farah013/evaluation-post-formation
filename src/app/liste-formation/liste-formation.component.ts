@@ -2,6 +2,7 @@ import { AppServiceService } from './../app-service.service';
 //import { Objectifs } from './../objectifs-pedagogiques/obejctifs';
 import { Component, OnInit } from '@angular/core';
 import formationData from './formationList.json';
+import { ActivatedRoute, Router } from '@angular/router';
 interface Formation {
   id: number;
   title: string;
@@ -26,8 +27,15 @@ export class ListeFormationComponent implements OnInit {
   }
   formationList = [];
   public postNewFormation(newFormation) {
-    this.formationList.push(newFormation);
-    console.warn(newFormation);
+    //this.formationList.push(newFormation);
+    this.service.postFormation(newFormation);
+    this.service.postObjectifs(newFormation);
+    this.service.postParticipants(newFormation);
+    // window.location.reload();
+
+    console.warn('THIS IS THE number of p', newFormation.NbreParticipants);
+    console.warn('THIS IS THE NEW FORMATION', newFormation);
+    console.warn('THIS IS THE NEW PARTICIPANTS', newFormation.Participants);
   }
   getDataFromAPI() {
     this.service.getData().subscribe(
@@ -40,5 +48,23 @@ export class ListeFormationComponent implements OnInit {
         console.log('Error is ', error);
       }
     );
+  }
+
+  public SearchNewTitle(title) {
+    // console.log('TITLE==', title);
+    if (title.length > 0) {
+      this.service.getDataByTitle(title).subscribe(
+        (response) => {
+          console.log('Response from API is ', response);
+          this.formationList = Object.values(response);
+          console.warn(this.formationList);
+        },
+        (error) => {
+          console.log('Error is ', error);
+        }
+      );
+    } else {
+      this.getDataFromAPI();
+    }
   }
 }

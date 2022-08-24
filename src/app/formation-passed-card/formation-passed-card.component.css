@@ -34,14 +34,23 @@ table {
 .btn-style {
   border-radius: 20px;
   padding-left: 15px;
-  margin-left: 85%;
+  margin-left: 60%;
 }
-.dot {
-  height: 15px;
-  width: 15px;
+.dot_orange {
+  height: 10px;
+  width: 10px;
   background-color: orange;
   border-radius: 50%;
   display: inline-block;
+  margin-left: 60%;
+}
+.dot_green {
+  height: 10px;
+  width: 10px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 60%;
 }
 table {
   font-size: 15px;
@@ -57,4 +66,15 @@ h1 {
 }
 li {
   list-style-type: square;
+}
+.eval-style {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 2%;
+  width: 50%;
+}
+
+::ng-deep .myCustomModalClass .modal-dialog {
+  max-width: 85%;
+  width: 85%;
 }

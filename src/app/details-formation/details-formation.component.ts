@@ -1,6 +1,6 @@
 import { outputAst } from '@angular/compiler';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormationDetails } from './formationDetails';
+import { Formation } from '../models/formation';
 @Component({
   selector: 'app-details-formation',
   templateUrl: './details-formation.component.html',
@@ -8,7 +8,7 @@ import { FormationDetails } from './formationDetails';
 })
 export class DetailsFormationComponent implements OnInit {
   @Output() getNewDetails: EventEmitter<any> = new EventEmitter();
-  fDetails: FormationDetails = new FormationDetails();
+  fDetails: Formation = new Formation();
   constructor() {}
   ngOnInit(): void {}
   public saveDetails() {

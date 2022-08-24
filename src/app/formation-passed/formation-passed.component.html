@@ -4,26 +4,21 @@
   </mat-drawer>
   <mat-drawer-content>
     <div class="title-style">
-      <p>
-        Liste des Formations planifiées
-        <app-ajout-formation
-          (postNewFormation)="postNewFormation($event)"
-          [formationList]="formationList"
-        ></app-ajout-formation>
-      </p>
+      <p>Liste des Formations passées</p>
     </div>
     <app-search-comp
       (SearchNewTitle)="SearchNewTitle($event)"
     ></app-search-comp>
     <ng-container *ngFor="let formation of formationList"
-      ><app-formation-card
-        *ngIf="formation.done != 1"
+      ><app-formation-passed-card
+        *ngIf="formation.Done == 1"
         [idFormation]="formation.idFormation"
         [titleF]="formation.Titre"
         [dateF]="formation.DateDeb"
         [nbreP]="formation.NbreParticipants"
         [formateur]="formation.Formateur"
-      ></app-formation-card
+        [Eval]="formation.Eval"
+      ></app-formation-passed-card
     ></ng-container>
   </mat-drawer-content>
 </mat-drawer-container>

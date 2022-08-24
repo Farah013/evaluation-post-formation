@@ -2,9 +2,112 @@
   <div class="card-body">
     <p class="card-title">
       {{ titleF }}
-      <a href="#" style="font-size: 13px" class="btn btn-light btn-style"
-        >Consulter la fiche de la formation</a
+
+      <button
+        style="font-size: 13px"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        (click)="
+          openSave(contentSave);
+          getFormationFromAPI();
+          getObjectifsFromAPI();
+          getParticipantsFromAPI()
+        "
+        class="btn btn-light btn-style"
       >
+        Consulter la fiche de la formation
+      </button>
+      <!-- Modal -->
+      <ng-template #contentSave let-modal>
+        <div class="modal-body">
+          <!--TABLE -->
+          <h1>Fiche de la formation</h1>
+          <table style="width: 100%">
+            <tr>
+              <td style="width: 70%">
+                <table style="width: 100%">
+                  <tr>
+                    <td class="fiche-style fiche-info">ID:</td>
+                    <td class="fiche-style">{{ formation.idFormation }}</td>
+                  </tr>
+                  <tr>
+                    <td class="fiche-style fiche-info">Titre:</td>
+                    <td class="fiche-style">{{ formation.Titre }}</td>
+                  </tr>
+                  <tr>
+                    <td class="fiche-style fiche-info">Formateur:</td>
+                    <td class="fiche-style">{{ formation.Formateur }}</td>
+                  </tr>
+                  <tr>
+                    <td class="fiche-style fiche-info">Date Début</td>
+                    <td class="fiche-style">{{ formation.DateDeb }}</td>
+                  </tr>
+                  <tr>
+                    <td class="fiche-style fiche-info">Date Fin</td>
+                    <td class="fiche-style">{{ formation.DateFin }}</td>
+                  </tr>
+                  <tr>
+                    <td class="fiche-style fiche-info">Mode</td>
+                    <td class="fiche-style">{{ formation.Mode }}</td>
+                  </tr>
+                  <tr
+                    *ngIf="
+                      formation.Mode !== 'En ligne' ||
+                      formation.Mode !== 'Online'
+                    "
+                  >
+                    <td class="fiche-style fiche-info">Lieu</td>
+                    <td class="fiche-style" *ngIf="formation.Lieu == null">
+                      {{ formation.Lieu }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="fiche-style fiche-info">
+                      Nombre de participants
+                    </td>
+                    <td class="fiche-style">
+                      {{ formation.NbreParticipants }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="fiche-style fiche-info">Objectifs</td>
+                    <td>
+                      <ul>
+                        <li *ngFor="let obj of objectifs">
+                          {{ obj.contenu }}
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="margin-right: 1%">
+                <h2>Liste des participants</h2>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Participant</th>
+                      <th scope="col">Identifiant</th>
+                      <th scope="col">Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let p of participants; index as i">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>
+                        {{ p.participant }}
+                      </td>
+                      <td>{{ p.identifiant }}</td>
+                      <td>{{ p.email }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </ng-template>
     </p>
     <table class="table-style">
       <tr>

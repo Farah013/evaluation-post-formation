@@ -37,3 +37,11 @@
 .liste-style {
   margin-top: 80px;
 }
+.menu-item-style {
+  font-weight: bold;
+  margin: 1rem;
+}
+select {
+  background-color: transparent;
+  border: none;
+}
